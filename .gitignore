@@ -1,0 +1,25 @@
+# Secrets - NEVER commit
+.env
+.env.local
+.env.production
+docker-compose.yml
+docker-compose.override.yml
+dags/config/config.py
+airflow_settings.yaml
+
+# Airflow runtime
+logs/
+airflow.db
+standalone_admin_password.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
