@@ -69,8 +69,6 @@ The system leverages:
 - Persona configuration for personalized results
 - Downloadable formatted itinerary
 
-## Based On
-This project builds upon the article: [Agentic AI: Building a Multi-Agent AI Travel Planner using Gemini LLM & Crew AI](https://medium.com/google-cloud/agentic-ai-building-a-multi-agent-ai-travel-planner-using-gemini-llm-crew-ai-6d2e93f72008)
 
 **Enhancements by FlyWise Team:**
 - Added persona-based recommendation system
