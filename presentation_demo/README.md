@@ -1,6 +1,6 @@
-# Multi-Agent AI Travel Planner
+# FlyWise - Personalized AI Travel Planner
 
-An agentic AI travel planning application using Gemini LLM and CrewAI framework. This project demonstrates how AI agents collaborate to streamline the travel planning process - retrieving real-time flight and hotel data, analyzing options, and generating personalized itineraries.
+An intelligent, persona-driven AI travel planning application using Gemini 2.0 LLM and CrewAI framework. This project demonstrates how AI agents collaborate to create personalized travel experiences tailored to individual preferences, spending power, and travel styles.
 
 ![Travel Planner Demo](images/travelplanner.webp)
 
@@ -10,43 +10,74 @@ An agentic AI travel planning application using Gemini LLM and CrewAI framework.
 
 ## Overview
 
-This project demonstrates how to build a multi-agent system where specialized AI agents work together to create comprehensive travel plans. Instead of manually searching across multiple platforms, this application automates the process through intelligent AI collaboration.
+FlyWise is a multi-agent AI system where specialized agents work together to create comprehensive, personalized travel plans. The system considers your unique travel persona—including your interests, personality type, and spending power—to recommend the perfect flights, hotels, and activities.
+
+Instead of generic recommendations, FlyWise provides:
+- **Budget-conscious recommendations** tailored to your spending power (Low/Medium/High)
+- **Persona-based customization** matching your travel experience preferences (Adventure, Art History, Food & Culture, etc.)
+- **Character-aligned suggestions** suited to your personality (Extrovert, Explorer, Introvert, etc.)
+- **Complete trip budget breakdown** with detailed cost estimates
 
 The system leverages:
-- **Gemini 2.0 LLM**: Powers the intelligence behind each agent
-- **CrewAI**: Coordinates the multi-agent workflow
+- **Gemini 2.0 Flash LLM**: Powers intelligent, personalized recommendations
+- **CrewAI**: Coordinates multi-agent workflow for comprehensive planning
 - **SerpAPI**: Retrieves real-time flight and hotel data
-- **FastAPI**: Handles backend API endpoints
-- **Streamlit**: Provides a user-friendly interface
+- **FastAPI**: Handles backend API endpoints efficiently
+- **Streamlit**: Provides intuitive, user-friendly interface
 
 ## Key Features
 
-### 1. Flight Search Automation
+### 1. Persona-Based Travel Planning
+- **Travel Experience Focus**: Choose from Adventure, Art History, Food & Culture, or General
+- **Character & Interests**: Tailor recommendations to Extrovert, Introvert, Explorer, or Relaxation Seeker personalities
+- **Spending Power Tiers**: Get recommendations matched to Low, Medium, or High budget preferences
+
+### 2. Smart Flight Recommendations
 - Retrieves real-time flight data from Google Flights via SerpAPI
-- Filters flights based on price, layovers, and travel time
-- AI recommends the best flight based on cost-effectiveness and convenience
+- Sorts flights by price for easy comparison
+- AI recommends flights based on your spending power:
+  - **Low**: Prioritizes cheapest options, accepts longer durations and stops
+  - **Medium**: Balances price with reasonable duration and minimal stops
+  - **High**: Focuses on premium airlines, shortest duration, and nonstop flights
 
-### 2. Hotel Recommendations
+### 3. Intelligent Hotel Selection
 - Searches real-time hotel availability from Google Hotels
-- Filters based on location, budget, amenities, and user ratings
-- AI suggests the best hotel by analyzing factors like proximity to key locations
+- Filters and sorts hotels by price
+- AI suggests hotels matching your budget tier and personality:
+  - **Low**: Affordable options with acceptable amenities
+  - **Medium**: Best value hotels with solid ratings and convenient locations
+  - **High**: Luxury hotels with premium amenities and prime locations
 
-### 3. AI-Powered Analysis & Recommendations
-- Gemini LLM-powered AI agent evaluates travel options
-- Uses CrewAI to coordinate multiple AI agents for better decision-making
-- AI explains its recommendation logic for flights and hotels
+### 4. Personalized Itinerary Generation
+- Creates day-by-day plans tailored to your interests and personality
+- Activity recommendations based on travel experience preference:
+  - **Adventure**: Outdoor activities, hiking, adventure sports
+  - **Art History**: Museums, galleries, cultural landmarks
+  - **Food & Culture**: Local markets, authentic restaurants, food tours
+- Social activities matched to your character type (group tours for extroverts, quiet experiences for introverts)
+- Budget-appropriate suggestions for dining and transportation
 
-### 4. Dynamic Itinerary Generation
-- AI builds a structured travel plan based on flight and hotel bookings
-- Generates a day-by-day itinerary with must-visit attractions, restaurant recommendations, and local transportation options
+### 5. Comprehensive Budget Breakdown
+- Detailed cost analysis at the end of every itinerary
+- **Fixed Costs**: Exact flight and hotel expenses
+- **Variable Costs**: Estimated daily food, activities, and transportation
+- **Total Trip Budget**: Realistic price range for entire journey
 
-### 5. User-Friendly Interface
-- Streamlit provides an intuitive UI for inputting travel preferences
-- Interactive tabs for viewing flights, hotels, and AI recommendations
+### 6. User-Friendly Interface
+- Streamlit provides intuitive UI for travel preferences
+- Interactive tabs for flights, hotels, AI recommendations, and itinerary
+- Persona configuration for personalized results
 - Downloadable formatted itinerary
 
 ## Based On
-This project is based on the article: [Agentic AI: Building a Multi-Agent AI Travel Planner using Gemini LLM & Crew AI](https://medium.com/google-cloud/agentic-ai-building-a-multi-agent-ai-travel-planner-using-gemini-llm-crew-ai-6d2e93f72008)
+This project builds upon the article: [Agentic AI: Building a Multi-Agent AI Travel Planner using Gemini LLM & Crew AI](https://medium.com/google-cloud/agentic-ai-building-a-multi-agent-ai-travel-planner-using-gemini-llm-crew-ai-6d2e93f72008)
+
+**Enhancements by FlyWise Team:**
+- Added persona-based recommendation system
+- Implemented spending power-aware flight and hotel selection
+- Created character-aligned itinerary generation
+- Added comprehensive trip budget calculator
+- Optimized for budget-conscious travelers
 
 ## Installation
 
@@ -59,8 +90,8 @@ This project is based on the article: [Agentic AI: Building a Multi-Agent AI Tra
 
 1. Clone the repository
 ```bash
-git clone https://github.com/arjunprabhulal/gemini-crewai-travelplanner.git
-cd gemini-crewai-travelplanner
+git clone https://github.com/AkashMalhotra2022/GenAI_FlyWise.git
+cd GenAI_FlyWise/presentation_demo
 ```
 
 2. Create and activate a virtual environment
@@ -100,75 +131,105 @@ python gemini2_travel_v2.py
 
 2. In a new terminal window, start the Streamlit frontend
 ```bash
-python gemini2_travel_v2_frontend.py
+streamlit run gemini2_travel_v2_frontend.py
 ```
 
 3. Open your browser and navigate to http://localhost:8501
 
-4. Enter your travel preferences:
-   - Input departure and destination airports
-   - Set travel dates
-   - Select search mode (complete, flights only, or hotels only)
-   - Click "Search" and wait for the AI to process your request
+4. Configure your travel persona (optional - defaults to Adventure/Extrovert/Medium):
+   - **Travel Experience**: Adventure, Art History, Food & Culture, or General
+   - **Character & Interests**: Extrovert, Explorer & Extrovert, Introvert, or Relaxation Seeker
+   - **Spending Power**: Low, Medium, or High
 
-5. Review the personalized results:
-   - Flight options with AI recommendations
-   - Hotel options with AI recommendations
-   - Day-by-day itinerary with activities and restaurant suggestions
+5. Enter your travel details:
+   - Departure and destination airports (IATA codes)
+   - Travel dates
+   - Select search mode (complete, flights only, or hotels only)
+
+6. Click "Search" and let the AI create your personalized travel plan
+
+7. Review your results:
+   - Flight options sorted by price with persona-matched AI recommendations
+   - Hotel options with personality-aligned suggestions
+   - Day-by-day itinerary customized to your interests
+   - Complete trip budget breakdown
 
 ## Architecture
 
-### Multi-Agent System
-The application uses a collaborative AI system with specialized agents:
+### Persona-Driven Multi-Agent System
+
+The application uses a sophisticated AI system with specialized agents that consider your unique travel profile:
 
 1. **Flight Analyst Agent**:
-   - Analyzes flight options based on price, duration, stops, and convenience
-   - Provides structured recommendations with reasoning
+   - Analyzes options based on your spending power tier
+   - Recommends cheapest, best value, or premium flights accordingly
+   - Considers personality type for duration and convenience preferences
+   - Provides detailed reasoning for recommendations
 
 2. **Hotel Analyst Agent**:
-   - Evaluates hotel options based on price, rating, location, and amenities
-   - Offers detailed hotel recommendations with pros and cons
+   - Evaluates hotels matching your budget tier
+   - Highlights locations near attractions relevant to your travel experience
+   - Considers character type for social atmosphere and amenities
+   - Offers personalized pros and cons analysis
 
 3. **Travel Planner Agent**:
-   - Creates comprehensive itineraries using flight and hotel information
-   - Schedules activities, meals, and transportation for each day of the trip
+   - Creates itineraries tailored to your interests (adventure, art, food)
+   - Suggests activities matching your character type (social vs. quiet)
+   - Plans dining and transportation within your spending power
+   - Includes budget breakdown with realistic cost estimates
 
 ### Project Structure
 
-- `gemini2_travel_v2.py`: FastAPI backend application with API endpoints, data fetching, and AI agent coordination
-- `gemini2_travel_v2_frontend.py`: Streamlit frontend interface for user interaction
+- `gemini2_travel_v2.py`: FastAPI backend with persona-aware AI agents and API endpoints
+- `gemini2_travel_v2_frontend.py`: Streamlit frontend with persona configuration interface
 - `requirements.txt`: Project dependencies
-- `images/`: Directory containing demonstration images and GIFs
-  - `travelplanner.webp`: Static screenshot of the application interface
-  - `travelplanner-demo.gif`: Animated demonstration of the application in use
+- `images/`: Demonstration images and GIFs
 
-## Implementation Details
+## Implementation Highlights
 
-The application follows a modular architecture:
+### Persona System
+```python
+class UserPersona(BaseModel):
+    travel_experience: str = "Adventure"  # Adventure, Art History, Food & Culture
+    character_interests: str = "Extrovert"  # Extrovert, Introvert, Explorer, Relaxation Seeker
+    spending_power: str = "Medium"  # Low, Medium, High
+```
 
-1. **API Initialization**:
-   - FastAPI setup with endpoints for flight search, hotel search, and itinerary generation
-  
-2. **Data Retrieval**:
-   - Asynchronous functions connect to SerpAPI to fetch real-time flight and hotel data
-   - Response formatting and data validation using Pydantic models
+### Spending Power Logic
+- **Low**: Prioritizes cheapest options, accepts trade-offs
+- **Medium**: Seeks best value, balances price with quality
+- **High**: Focuses on premium experiences regardless of price
 
-3. **AI Analysis**:
-   - CrewAI orchestrates specialized AI agents
-   - Each agent analyzes specific aspects of the travel plan
-   - Gemini LLM powers the intelligence of each agent
-
-4. **Frontend Interface**:
-   - Streamlit UI with interactive forms and tabs
-   - Real-time data display with filtering options
-   - Downloadable itinerary generation
+### Budget Calculation
+Automatically calculates:
+- Fixed costs (flights, hotels)
+- Variable costs (food, activities, transportation)
+- Daily estimates based on spending power
+- Total trip budget range
 
 ## Repository
 
-This code is available on GitHub at [arjunprabhulal/gemini-crewai-travelplanner](https://github.com/arjunprabhulal/gemini-crewai-travelplanner).
+Full source code available at:
+[https://github.com/AkashMalhotra2022/GenAI_FlyWise/tree/main/presentation_demo](https://github.com/AkashMalhotra2022/GenAI_FlyWise/tree/main/presentation_demo)
 
-## Author
+## Contributors
 
-For more articles on AI/ML and Generative AI, follow me on Medium:
-[https://medium.com/@arjun-prabhulal](https://medium.com/@arjun-prabhulal)
+**FlyWise Development Team:**
+- **Akash Kumar Malhotra** 
+- **Nikhil Narendra Choudhari** 
+- **Moinuddin Mohammed** 
 
+
+
+## Future Enhancements
+
+- Multi-city trip planning
+- Real-time price tracking and alerts
+- Integration with booking platforms
+- Collaborative trip planning for groups
+- Weather-aware activity recommendations
+- Visa and travel document assistance
+
+---
+
+**FlyWise** - Travel smarter, not harder. 🛫✨
